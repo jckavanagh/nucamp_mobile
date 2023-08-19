@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import RenderCampsite from '../features/campsites/RenderCampsite';
 import { toggleFavorite } from '../features/favorites/favoritesSlice';
 import { Input, Rating } from 'react-native-elements';
+import { postComment } from '../features/comments/commentsSlice';
 
 const CampsiteInfoScreen = ({ route }) => {
     const { campsite } = route.params;
@@ -22,7 +23,7 @@ const CampsiteInfoScreen = ({ route }) => {
             text,
             campsiteId: campsite.id
         }
-        console.log(newComment)
+        dispatch(postComment(newComment));
         setShowModal(!showModal);
     };
 
@@ -149,4 +150,3 @@ const styles = StyleSheet.create({
 
 export default CampsiteInfoScreen;
 
-/* <Text style={{ fontSize: 12 }}>{item.rating} Stars</Text> */
